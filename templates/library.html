@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="content">
+      <section class="library">
+        <p class="library__title">Библиотека</p>
+        <p class="library__subtitle">В этом разделе вы сможете ознакомиться с учебниками, по <br/> которым мы обучаем наших студентов</p>
+        <div class="library__content">
+          {% for book in books %}
+            <div class="library__category">
+                <div class="category">
+                  <p class="category__title">{{ book.title }}</p>
+                  <a class="category__link" href="{{ book.file.url }}">Файл</a>
+                  <!-- <a class="category__link" href="href">Практические задания</a> -->
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+{% endblock %}

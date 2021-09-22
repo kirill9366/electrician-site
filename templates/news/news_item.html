@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="content">
+      <section class="news_item">
+        <p class="news_item__date">{{ object.date }}</p>
+        <p class="news_item__title">{{ object.title }}</p>
+        {% for paragraph in object.content.all %}
+          {% if paragraph.text %}
+            <p class="news_item__text">{{ paragraph.text }}</p>
+          {% endif %}
+          {% if paragraph.image %}
+            <img class="news_item__img" src="{{ paragraph.image.url }}">
+          {% endif %}
+        {% endfor %}
+
+      </section>
+    </div>
+{% endblock %}

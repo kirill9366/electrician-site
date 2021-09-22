@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="content">
+      <section class="profile">
+        <div class="profile__top_info">
+          <div class="profile__info"><img class="profile__img" src="{{ object.image.url }}">
+            <div class="profile__short_info">
+              <p class="profile__name">{{ object.full_name }}</p>
+              <p class="profile__profession">{{ object.subtitle }}</p>
+              {% if object.email %}
+                <div class="profile__contact_block">
+                  <i class="profile__big_icon fas fa-envelope fa-2x"></i>
+                  <i class="profile__small_icon fas fa-envelope fa-1x"></i>
+                  <div class="profile__contact">{{ object.email }}</div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="profile_bottom_info">
+          <div class="profile__description_title">Описание</div>
+          <div class="profile__description">{{ object.description }}</div>
+        </div>
+      </section>
+    </div>
+{% endblock %}

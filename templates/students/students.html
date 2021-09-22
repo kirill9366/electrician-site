@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="content">
+      <section class="students">
+        <div class="students__title">Студенты</div>
+        <div class="students__content">
+          {% for student in students %}
+            <div class="students__cardf"><a class="student_card" href="{% url 'student' pk=student.pk %}">
+                      <div class="student_card__inner_block"><img class="student_card__img" src="{{ student.image.url }}">
+                        <p class="student_card__name">{{ student.full_name }}</p>
+                      </div></a>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+      <section class="pagination">
+        {% if page_obj.has_previous %}
+          <a class="pagination__button" href="{% url 'students' %}?page={{ page_obj.number|add:'-1' }}"><i class="fas fa-chevron-left"></i></a>
+        {% endif %}
+
+        {% with '-3 -2 -1 0 1 2 3' as list %}
+          {% for item in list.split %}
+
+              {% if page_obj.number == page_obj.number|add:item %}
+                <a class="pagination__button pagination__button_active" href="{% url 'students' %}?page={{ page_obj.number|add:item }}">{{ page_obj.start_index }}</a>
+              {% elif 1 <= page_obj.number|add:item and page_obj.paginator.num_pages >= page_obj.number|add:item %}
+                <a class="pagination__button" href="{% url 'students' %}?page={{ page_obj.number|add:item }}">{{ page_obj.number|add:item }}</a>
+              {% endif %}
+
+          {% endfor %}
+        {% endwith %}
+
+        {% if page_obj.has_next %}
+          <a class="pagination__button" href="{% url 'students' %}?page={{ page_obj.number|add:'1' }}"><i class="fas fa-chevron-right"></i></a>
+        {% endif %}
+      </section>
+    </div>
+{% endblock %}

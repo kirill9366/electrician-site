@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="content">
+      <secion class="news">
+        <div class="news__title">Новости</div>
+        <div class="news__content">
+          {% for news_item in news %}
+            <div class="news__card"><a class="news_card" href="{% url 'news_item' pk=news_item.pk %}">
+                      <div class="news_card__inner"><img class="news_card__img" src="{{ news_item..preview_image.url }}">
+                        <p class="news_card__title">{{ news_item.title|truncatechars:26 }}</p>
+                        <p class="news_card__description">{{ news_item.preview_text|truncatechars:180 }}</p>
+                      </div></a>
+            </div>
+          {% endfor %}
+        </div>
+      </secion>
+      <section class="pagination">
+        {% if page_obj.has_previous %}
+          <a class="pagination__button" href="{% url 'news' %}?page={{ page_obj.number|add:'-1' }}"><i class="fas fa-chevron-left"></i></a>
+        {% endif %}
+
+        {% with '-3 -2 -1 0 1 2 3' as list %}
+          {% for item in list.split %}
+
+              {% if page_obj.number == page_obj.number|add:item %}
+                <a class="pagination__button pagination__button_active" href="{% url 'news' %}?page={{ page_obj.number|add:item }}">{{ page_obj.start_index }}</a>
+              {% elif 1 <= page_obj.number|add:item and page_obj.paginator.num_pages >= page_obj.number|add:item %}
+                <a class="pagination__button" href="{% url 'news' %}?page={{ page_obj.number|add:item }}">{{ page_obj.number|add:item }}</a>
+              {% endif %}
+
+          {% endfor %}
+        {% endwith %}
+
+        {% if page_obj.has_next %}
+          <a class="pagination__button" href="{% url 'news' %}?page={{ page_obj.number|add:'1' }}"><i class="fas fa-chevron-right"></i></a>
+        {% endif %}
+      </section>
+    </div>
+{% endblock %}
