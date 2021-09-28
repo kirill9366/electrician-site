@@ -1,9 +1,15 @@
 from django.db import models
 
 
-class NewsParagraphModel(models.Model):
-    """Параграф для кокретной новости"""
+class ParagraphModel(models.Model):
+    """Параграф, представляет собой блок с названием, изображением и текстом"""
 
+    title = models.CharField(
+        verbose_name='Название',
+        max_length=255,
+        null=True,
+        blank=True,
+    )
     text = models.TextField(
         verbose_name='Текст',
         null=True,
@@ -11,13 +17,13 @@ class NewsParagraphModel(models.Model):
     )
     image = models.ImageField(
         verbose_name='Изображение',
-        upload_to='news_item/',
+        upload_to='paragraph/',
         null=True,
         blank=True,
     )
 
     def __str__(self):
-        return self.text[:20]
+        return f'{self.title} {self.text[:15]}'
 
     class Meta:
         verbose_name = 'Параграф'
@@ -42,7 +48,7 @@ class NewsItemModel(models.Model):
         auto_now=True,
     )
     content = models.ManyToManyField(
-        NewsParagraphModel,
+        ParagraphModel,
     )
 
     def __str__(self):

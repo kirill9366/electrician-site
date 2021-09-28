@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="content">
+      <section class="course_paper">
+        <p class="course_paper__title">{{ object.title }}</p>
+        <p class="course_paper__subtitle">{{ object.subtitle }}</p>
+        <div class="course_paper__content">
+          {% for paragraph in object.content.all %}
+            {% if paragraph.title %}
+              <p class="course_paper__subject">{{ paragraph.title }}</p>
+            {% endif %}
+            {% if paragraph.text %}
+              <p class="course_paper__text">{{ paragraph.text }}</p>
+            {% endif %}
+          {% endfor %}
+          {% if object.file %}
+            <a class="course_paper__button" href="{{ object.file.url }}">Скачать</a>
+          {% endif %}
+        </div>
+      </section>
+    </div>
+{% endblock %}

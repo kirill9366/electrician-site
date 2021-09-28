@@ -27,6 +27,9 @@ urlpatterns = [
     path('', include('main.urls')),
     path('', include('library.urls')),
     path('', include('about_us.urls')),
+    path('', include('demo_exam.urls')),
+    path('', include('practice.urls')),
+    path('', include('authentication.urls')),
 ]
 
 if settings.DEBUG:

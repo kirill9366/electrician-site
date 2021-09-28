@@ -1,5 +1,8 @@
 from django.db import models
 
+# locale imports
+from news.models import ParagraphModel
+
 
 class CourseModel(models.Model):
     number = models.IntegerField(
@@ -14,35 +17,9 @@ class CourseModel(models.Model):
         verbose_name_plural = 'Курсы'
 
 
-class CourseParagraphModel(models.Model):
-    title = models.CharField(
-        verbose_name='Название',
-        max_length=255,
-        null=True,
-        blank=True,
-    )
-    text = models.TextField(
-        verbose_name='Текст',
-        null=True,
-        blank=True,
-    )
-    image = models.ImageField(
-        verbose_name='Изображение',
-        upload_to='course_projects/',
-        null=True,
-        blank=True,
-    )
-
-    def __str__(self):
-        return f'{self.title} {self.text[:15]}'
-
-    class Meta:
-        verbose_name = 'Параграф'
-        verbose_name_plural = 'Параграфы'
-
-
 class CourseProjectModel(models.Model):
     image = models.ImageField(
+        verbose_name='Изображение',
         upload_to='course_projects/',
     )
     title = models.CharField(
@@ -61,8 +38,12 @@ class CourseProjectModel(models.Model):
         blank=True,
     )
     content = models.ManyToManyField(
-        CourseParagraphModel,
+        ParagraphModel,
         verbose_name='Контент',
+    )
+    file = models.FileField(
+        verbose_name='Файл',
+        upload_to='course_projects/',
     )
 
     def __str__(self):

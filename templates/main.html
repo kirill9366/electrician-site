@@ -3,7 +3,7 @@
 {% block content %}
     <div class="content">
       <section class="main">
-        <h1 class="main__text">МОНТАЖ, НАКЛАДКА И ЭКСПЛУАТАЦИЯ <br>ЭЛЕКТРООБОРУДОВАНИЯ В ПРОМЫШЛЕННЫХ<br>И ГРАЖДАНСКИХ ЗДАНИЯХ</h1><a class="main__link" href="href">Подробнее</a>
+        <h1 class="main__text">МОНТАЖ, НАКЛАДКА И ЭКСПЛУАТАЦИЯ <br>ЭЛЕКТРООБОРУДОВАНИЯ В ПРОМЫШЛЕННЫХ<br>И ГРАЖДАНСКИХ ЗДАНИЯХ</h1><a class="main__link" href="{% url 'about_us' %}">Подробнее</a>
       </section>
       <section class="preview_news">
         <p class="preview_news__title">Новости</p>
@@ -19,7 +19,7 @@
           </div>
         </div>
         {% endfor %}
-        <a class="preview_news__link" href="href">Больше новостей</a>
+        <a class="preview_news__link" href="{% url 'news' %}">Больше новостей</a>
       </section>
       <section class="contacts">
         <div class="contacts__box">

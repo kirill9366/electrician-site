@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="content">
+      <section class="authorization">
+        <div class="authorization__inner_box">
+          <form class="authorization__form" method="POST">
+            <div class="authorization__title">Регистрация</div>
+
+            <div class="authorization__input_container">
+              <label class="authorization__label" for="email">{{ form.email.label }}</label>
+              <div class="authorization__input_block">
+                <input name="email" class="authorization__input" type="email" id="email" placeholder="mail@gmail.com">
+              </div>
+            </div>
+
+            <div class="authorization__input_container">
+              <label class="authorization__label" for="email">{{ form.username.label }}</label>
+              <div class="authorization__input_block">
+                <input name="username" class="authorization__input" type="text" id="username" placeholder="Никнейм">
+              </div>
+            </div>
+
+            <div class="authorization__input_container">
+              <label class="authorization__label" for="">{{ form.full_name.label }}</label>
+              <div class="authorization__input_block">
+                <input name="full_name" class="authorization__input" type="text" id="full_name" placeholder="ФИО">
+              </div>
+            </div>
+
+            <div class="authorization__input_container">
+              <label class="authorization__label" for="">{{ form.course_num.label }}</label>
+              <div class="authorization__input_block">
+                <input name="course_num" class="authorization__input" type="text" id="course_num" placeholder="Курс">
+              </div>
+            </div>
+
+            <div class="authorization__input_container">
+              <label class="authorization__label" for="email">{{ form.password.label }}</label>
+              <div class="authorization__input_block">
+                <input class="authorization__input" type="password" id="password" placeholder="Пароль"><i class="authorization__input_icon fas fa-eye" id="password"></i>
+              </div>
+            </div>
+
+            <div class="authorization__input_container">
+              <label class="authorization__label" for="email">{{ form.password2.label }}</label>
+              <div class="authorization__input_block">
+                <input class="authorization__input" type="password" id="password2" placeholder="Пароль"><i class="authorization__input_icon fas fa-eye" id="password2"></i>
+              </div>
+            </div>
+
+            {% csrf_token %}
+
+            <button class="authorization__button">Войти</button>
+          </form>
+        </div>
+      </section>
+    </div>
+{% endblock %}

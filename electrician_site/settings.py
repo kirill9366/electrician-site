@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'main',
     'library',
     'about_us',
+    'demo_exam',
+    'practice',
+    'authentication',
 ]
 
 MIDDLEWARE = [
