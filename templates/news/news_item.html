@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+
+{% block header_news %}
+  <li class="header__item">
+    <a class="header__link_active" href="{% url 'news' %}">Новости</a>
+  </li>
+{% endblock %}
+
 {% block content %}
     <div class="content">
       <section class="news_item">

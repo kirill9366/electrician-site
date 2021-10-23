@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% block header_course_projects %}
+  <li class="header__item">
+    <a class="header__link_active" href="{% url 'course_projects' %}">Курсовые и дипломные проекты</a>
+  </li>
+{% endblock %}
 {% block content %}
     <div class="content">
       <section class="course_paper">

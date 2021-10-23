@@ -14,17 +14,21 @@ class AddInfo(models.Model):
     full_name = models.CharField(
         verbose_name='Полноя имя',
         max_length=255,
+        null=True,
+        blank=True,
     )
     course_num = models.IntegerField(
         verbose_name='Курс',
         validators=[
             MaxValueValidator(4),
             MinValueValidator(1),
-        ]
+        ],
+        null=True,
+        blank=True,
     )
 
     def __str__(self):
-        return f'{self.user}: {self.balance}'
+        return f'{self.user.username}'
 
 
 @receiver(post_save, sender=User)

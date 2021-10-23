@@ -11,22 +11,54 @@
     <header>
       <a class="logo" href="{% url 'main' %}"><img class="logo__img" src="{% static 'images/logo.png' %}"></a>
       <ol class="header__list">
-            <li class="header__item"><a class="header__link_active" href="{% url 'news' %}">Новости</a>
-            </li>
-            <li class="header__item"><a class="header__link link_theme_white" href="{% url 'students' %}">Лучшие студенты</a>
-            </li>
-            <li class="header__item"><a class="header__link link_theme_white" href="{% url 'course_projects' %}">Курсовые и дипломные проекты</a>
-            </li>
-            <li class="header__item"><a class="header__link link_theme_white" href="{% url 'library' %}">Библиотека</a>
-            </li>
-            <li class="header__item"><a class="header__link link_theme_white" href="{% url 'practice' %}">Практика</a>
-            </li>
-            <li class="header__item"><a class="header__link link_theme_white" href="{% url 'demo_exam' %}">Демонстрационный экзамен</a>
-            </li>
+        {% block header_news %}
+          <li class="header__item">
+            <a class="header__link link_theme_white" href="{% url 'news' %}">Новости</a>
+          </li>
+        {% endblock %}
+        {% block header_students %}
+          <li class="header__item">
+            <a class="header__link link_theme_white" href="{% url 'students' %}">Лучшие студенты</a>
+          </li>
+        {% endblock %}
+        {% block header_course_projects %}
+          <li class="header__item">
+            <a class="header__link link_theme_white" href="{% url 'course_projects' %}">Курсовые и дипломные проекты</a>
+          </li>
+        {% endblock %}
+        {% block header_library %}
+          <li class="header__item">
+            <a class="header__link link_theme_white" href="{% url 'library' %}">Библиотека</a>
+          </li>
+        {% endblock %}
+        {% block header_practice %}
+          <li class="header__item">
+            <a class="header__link link_theme_white" href="{% url 'practice' %}">Практика</a>
+          </li>
+        {% endblock %}
+        {% block header_demo_exam %}
+          <li class="header__item">
+            <a class="header__link link_theme_white" href="{% url 'demo_exam' %}">Демонстрационный экзамен</a>
+          </li>
+        {% endblock %}
       </ol>
-      <div class="auth"><a class="auth__login" href="href"><img class="auth__login_img" src="../images/login.png">
-          <p class="auth__login_text link_theme_white">Войти</p></a><a class="auth__signup" href="href"><img class="auth__signup_img" src="{% static 'images/user.png' %}">
-          <p class="auth__signup_text">Регистрация</p></a></div>
+      <div class="auth">
+        {% if not request.user.is_authenticated %}
+        <a class="auth__login" href="{% url 'signin' %}"><img class="auth__login_img" src="../images/login.png">
+          <p class="auth__login_text link_theme_white">Войти</p>
+        </a>
+        <a class="auth__signup" href="{% url 'signup' %}"><img class="auth__signup_img" src="{% static 'images/user.png' %}">
+          <p class="auth__signup_text">Регистрация</p>
+        </a>
+        {% else %}
+        <a class="auth__login" href="{% url 'logout' %}"><img class="auth__login_img" src="../images/login.png">
+          <p class="auth__login_text link_theme_white">Выйти</p>
+        </a>
+        <a class="auth__signup" href="{% url 'signup' %}"><img class="auth__signup_img" src="{% static 'images/user.png' %}">
+          <p class="auth__signup_text">{{ request.user.username }}</p>
+        </a>
+        {% endif %}
+      </div>
       <div class="burger_menu"><span class="burger_menu__button"></span></div>
     </header>
     {% block content %}
@@ -35,12 +67,12 @@
       <div class="top_footer">
         <div class="logo"><img class="logo__img" src="{% static 'images/green_logo.png' %}"></div>
         <ol class="footer__list">
-              <li class="footer__item"><a class="footer__link" href="href">Новости</a></li>
-              <li class="footer__item"><a class="footer__link" href="href">Лучшие студенты</a></li>
-              <li class="footer__item"><a class="footer__link" href="href">Курсовые и дипломные проекты</a></li>
-              <li class="footer__item"><a class="footer__link" href="href">Библиотека</a></li>
-              <li class="footer__item"><a class="footer__link" href="href">Практика</a></li>
-              <li class="footer__item"><a class="footer__link" href="href">Демонстрационный экзамен</a></li>
+              <li class="footer__item"><a class="footer__link" href="{% url 'news' %}">Новости</a></li>
+              <li class="footer__item"><a class="footer__link" href="{% url 'students' %}">Лучшие студенты</a></li>
+              <li class="footer__item"><a class="footer__link" href="{% url 'course_projects' %}">Курсовые и дипломные проекты</a></li>
+              <li class="footer__item"><a class="footer__link" href="{% url 'library' %}">Библиотека</a></li>
+              <li class="footer__item"><a class="footer__link" href="{% url 'practice' %}">Практика</a></li>
+              <li class="footer__item"><a class="footer__link" href="{% url 'demo_exam' %}">Демонстрационный экзамен</a></li>
         </ol>
       </div>
       <div class="lower_footer">

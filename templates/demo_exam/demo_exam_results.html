@@ -1,7 +1,11 @@
 {% extends "demo_exam/demo_exam_template.html" %}
 {% load static %}
-{% block demo_exam_content %}
 
+{% block demo_exam_res %}
+  <a class="demo_exam__chapter demo_exam__chapter_active" href="{% url 'demo_exam_results' %}">Лучшие результаты</a>
+{% endblock %}
+
+{% block demo_exam_content %}
   {% for result in results %}
     <div class="demo_exam__result">
       <div class="result_card"><img class="result_card__img" src="{{ result.image.url }}">
@@ -16,5 +20,4 @@
       </div>
     </div>
   {% endfor %}
-
 {% endblock %}

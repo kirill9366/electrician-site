@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block header_news %}
+  <li class="header__item">
+    <a class="header__link_active" href="{% url 'news' %}">Новости</a>
+  </li>
+{% endblock %}
+
 {% block content %}
     <div class="content">
       <secion class="news">
@@ -24,7 +31,7 @@
           {% for item in list.split %}
 
               {% if page_obj.number == page_obj.number|add:item %}
-                <a class="pagination__button pagination__button_active" href="{% url 'news' %}?page={{ page_obj.number|add:item }}">{{ page_obj.start_index }}</a>
+                <a class="pagination__button pagination__button_active" href="{% url 'news' %}?page={{ page_obj.number|add:item }}">{{ page_obj.number }}</a>
               {% elif 1 <= page_obj.number|add:item and page_obj.paginator.num_pages >= page_obj.number|add:item %}
                 <a class="pagination__button" href="{% url 'news' %}?page={{ page_obj.number|add:item }}">{{ page_obj.number|add:item }}</a>
               {% endif %}

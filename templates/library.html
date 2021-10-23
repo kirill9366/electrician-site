@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block header_library %}
+  <li class="header__item">
+    <a class="header__link_active" href="{% url 'library' %}">Библиотека</a>
+  </li>
+{% endblock %}
+
 {% block content %}
     <div class="content">
       <section class="library">
