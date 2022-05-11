@@ -1,48 +1,55 @@
 {% extends "base.html" %}
+
 {% load static %}
+{% load sorl_thumbnail %}
+
 {% block header_course_projects %}
   <li class="header__item">
     <a class="header__link_active" href="{% url 'course_projects' %}">Курсовые и дипломные проекты</a>
   </li>
 {% endblock %}
 {% block content %}
-    <div class="content">
-      <div class="course_projects">
-        <div class="course_projects__title">Курсовые и дипломные проекты</div>
-        {% for course_project in course_projects %}
-        <div class="course_projects__content"><a class="course_projects__card" href="{% url 'course_project' pk=course_project.pk %}">
-                  <div class="course_project_card">
-                    <div class="course_project_card__inner">
-                      <div class="course_projects_card__block">
-                        <p class="course_project_card__course">{{ course_project.course.number }} курс</p><img class="course_project_card__img" src="{{ course_project.image.url }}">
-                      </div>
-                      <p class="course_project_card__title">{{ course_project.title }}</p>
-                      <p class="course_project_card__description">{{ course_project.subtitle }} </p>
-                    </div>
-                  </div></a>
-        </div>
-        {% endfor %}
+  <div class="content">
+    <div class="course_projects">
+      <div class="course_projects__title">Курсовые и дипломные проекты</div>
+      <div class="course_projects__content">
+      {% for course_project in course_projects %}
+      <a class="course_projects__card" href="{% url 'course_project' pk=course_project.pk %}">
+        <div class="course_project_card">
+          <div class="course_project_card__inner">
+            <div class="course_projects_card__block">
+              <p class="course_project_card__course">{{ course_project.course.number }} курс</p>
+              {% thumbnail course_project.image "374x433" crop="center" as im %}
+                <img class="course_project_card__img" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+              {% endthumbnail %}
+            </div>
+            <p class="course_project_card__title">{{ course_project.title }}</p>
+            <p class="course_project_card__description">{{ course_project.subtitle }} </p>
+          </div>
+        </div></a>
+      {% endfor %}
       </div>
-      <section class="pagination">
-        {% if page_obj.has_previous %}
-          <a class="pagination__button" href="{% url 'course_projects' %}?page={{ page_obj.number|add:'-1' }}"><i class="fas fa-chevron-left"></i></a>
-        {% endif %}
-
-        {% with '-3 -2 -1 0 1 2 3' as list %}
-          {% for item in list.split %}
-
-              {% if page_obj.number == page_obj.number|add:item %}
-                <a class="pagination__button pagination__button_active" href="{% url 'course_projects' %}?page={{ page_obj.number|add:item }}">{{ page_obj.number }}</a>
-              {% elif 1 <= page_obj.number|add:item and page_obj.paginator.num_pages >= page_obj.number|add:item %}
-                <a class="pagination__button" href="{% url 'course_projects' %}?page={{ page_obj.number|add:item }}">{{ page_obj.number|add:item }}</a>
-              {% endif %}
-
-          {% endfor %}
-        {% endwith %}
-
-        {% if page_obj.has_next %}
-          <a class="pagination__button" href="{% url 'course_projects' %}?page={{ page_obj.number|add:'1' }}"><i class="fas fa-chevron-right"></i></a>
-        {% endif %}
-      </section>
     </div>
+    <section class="pagination">
+      {% if page_obj.has_previous %}
+        <a class="pagination__button" href="{% url 'course_projects' %}?page={{ page_obj.number|add:'-1' }}"><i class="fas fa-chevron-left"></i></a>
+      {% endif %}
+
+      {% with '-3 -2 -1 0 1 2 3' as list %}
+        {% for item in list.split %}
+
+            {% if page_obj.number == page_obj.number|add:item %}
+              <a class="pagination__button pagination__button_active" href="{% url 'course_projects' %}?page={{ page_obj.number|add:item }}">{{ page_obj.number }}</a>
+            {% elif 1 <= page_obj.number|add:item and page_obj.paginator.num_pages >= page_obj.number|add:item %}
+              <a class="pagination__button" href="{% url 'course_projects' %}?page={{ page_obj.number|add:item }}">{{ page_obj.number|add:item }}</a>
+            {% endif %}
+
+        {% endfor %}
+      {% endwith %}
+
+      {% if page_obj.has_next %}
+        <a class="pagination__button" href="{% url 'course_projects' %}?page={{ page_obj.number|add:'1' }}"><i class="fas fa-chevron-right"></i></a>
+      {% endif %}
+    </section>
+  </div>
 {% endblock %}

@@ -19,7 +19,7 @@
               <p class="course_paper__text">{{ paragraph.text }}</p>
             {% endif %}
           {% endfor %}
-          <a class="course_paper__button" href="#">Скачать</a>
+          <a class="course_paper__button" href="{{ object.file.url }}">Скачать</a>
         </div>
       </section>
     </div>

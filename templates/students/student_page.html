@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+
 {% load static %}
+{% load sorl_thumbnail %}
 
 {% block header_students %}
   <li class="header__item">
@@ -8,10 +10,11 @@
 {% endblock %}
 
 {% block content %}
-    <div class="content">
-      <section class="profile">
-        <div class="profile__top_info">
-          <div class="profile__info"><img class="profile__img" src="{{ object.image.url }}">
+  <div class="content">
+    <section class="profile">
+      <div class="profile__top_info">
+        {% thumbnail object.image "374x433" crop="center" as im %}
+          <div class="profile__info"><img class="profile__img" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
             <div class="profile__short_info">
               <p class="profile__name">{{ object.full_name }}</p>
               <p class="profile__profession">{{ object.subtitle }}</p>
@@ -24,11 +27,12 @@
               {% endif %}
             </div>
           </div>
-        </div>
-        <div class="profile_bottom_info">
-          <div class="profile__description_title">Описание</div>
-          <div class="profile__description">{{ object.description }}</div>
-        </div>
-      </section>
-    </div>
+        {% endthumbnail %}
+      </div>
+      <div class="profile_bottom_info">
+        <div class="profile__description_title">Описание</div>
+        <div class="profile__description">{{ object.description }}</div>
+      </div>
+    </section>
+  </div>
 {% endblock %}
