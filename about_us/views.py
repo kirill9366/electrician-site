@@ -1,10 +1,12 @@
+from braces.views import LoginRequiredMixin
+
 from django.views.generic.base import TemplateView
 
 # locale imports
 from .models import ContactInfoModel
 
 
-class AboutUsView(TemplateView):
+class AboutUsView(LoginRequiredMixin, TemplateView):
     template_name = 'about_us.html'
 
     def get_context_data(self, **kwargs):

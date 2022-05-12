@@ -1,3 +1,5 @@
+from braces.views import LoginRequiredMixin
+
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView
 
@@ -7,26 +9,26 @@ from .models import ResultModel
 from library.models import BookModel
 
 
-class InfoDemoExamView(TemplateView):
+class InfoDemoExamView(LoginRequiredMixin, TemplateView):
     template_name = 'demo_exam/demo_exam_info.html'
 
 
-class DocDemoExamView(TemplateView):
+class DocDemoExamView(LoginRequiredMixin, TemplateView):
     template_name = 'demo_exam/demo_exam_documentation.html'
 
 
-class LibDemoExamView(ListView):
+class LibDemoExamView(LoginRequiredMixin, ListView):
     model = BookModel
     context_object_name = 'books'
 
     template_name = 'demo_exam/demo_exam_library.html'
 
 
-class DatesDemoExamView(TemplateView):
+class DatesDemoExamView(LoginRequiredMixin, TemplateView):
     template_name = 'demo_exam/demo_exam_calendar.html'
 
 
-class ResDemoExamView(ListView):
+class ResDemoExamView(LoginRequiredMixin, ListView):
     model = ResultModel
     context_object_name = 'results'
 

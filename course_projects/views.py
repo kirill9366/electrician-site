@@ -1,3 +1,5 @@
+from braces.views import LoginRequiredMixin
+
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 
@@ -5,7 +7,7 @@ from django.views.generic.detail import DetailView
 from .models import CourseModel, CourseProjectModel
 
 
-class CourseProjectsView(ListView):
+class CourseProjectsView(LoginRequiredMixin, ListView):
     model = CourseProjectModel
     context_object_name = 'course_projects'
     paginate_by = 9
@@ -23,7 +25,7 @@ class CourseProjectsView(ListView):
         return self.model.objects.filter(course=course)
 
 
-class CourseProjectDetailView(DetailView):
+class CourseProjectDetailView(LoginRequiredMixin, DetailView):
     model = CourseProjectModel
 
     template_name = 'course_projects/course_project.html'
