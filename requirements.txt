@@ -1,0 +1,10 @@
+asgiref==3.5.1
+Django==3.2.13
+django-braces==1.15.0
+django-cleanup==6.0.0
+django-pipeline==2.0.8
+Pillow==9.1.0
+pytz==2022.1
+sorl-thumbnail==12.8.0
+sqlparse==0.4.2
+typing_extensions==4.2.0
