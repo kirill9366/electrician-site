@@ -119,11 +119,28 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+PIPELINE = {
+    "PIPELINE_ENABLED": True,
+    "STYLESHEETS": {
+        "colors": {
+            "source_filenames": [
+                "css/styles.css",
+            ],
+            "output_filename": "css/styles.css",
+            "extra_context": {
+                "media": "screen,projection",
+            },
+        },
+    },
+}
+
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -136,4 +153,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "/sign-in/"
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+STATICFILES_STORAGE = "pipeline.storage.PipelineStorage"
