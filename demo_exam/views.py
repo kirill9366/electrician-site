@@ -33,3 +33,15 @@ class ResDemoExamView(LoginRequiredMixin, ListView):
     context_object_name = 'results'
 
     template_name = 'demo_exam/demo_exam_results.html'
+
+
+class MontageDemoExamView(LoginRequiredMixin, TemplateView):
+    template_name = "demo_exam/demo_exam_montage.html"
+
+
+class ProgrammingDemoExamView(LoginRequiredMixin, TemplateView):
+    template_name = "demo_exam/demo_exam_programming.html"
+
+
+class TroubleShootingDemoExamView(LoginRequiredMixin, TemplateView):
+    template_name = "demo_exam/demo_exam_troubleshooting.html"

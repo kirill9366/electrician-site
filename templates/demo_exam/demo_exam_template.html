@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+e{% extends "base.html" %}
 {% load static %}
 
 {% block header_demo_exam %}
@@ -30,9 +30,9 @@
             {% endblock %}
             {% block modules %}
               <div class="demo_exam__chapter">Модули демо-экзамена
-                <a class="demo_exam__subchapter" href="{% url 'demo_exam_results' %}">Монтаж</a>
-                <a class="demo_exam__subchapter" href="{% url 'demo_exam_results' %}">Программирование</a>
-                <a class="demo_exam__subchapter" href="{% url 'demo_exam_results' %}">Поиск неисправностей</a>
+                <a class="demo_exam__subchapter" href="{% url 'demo_exam_montage' %}">Монтаж</a>
+                <a class="demo_exam__subchapter" href="{% url 'demo_exam_programming' %}">Программирование</a>
+                <a class="demo_exam__subchapter" href="{% url 'demo_exam_troubleshooting' %}">Поиск неисправностей</a>
               </div>
             {% endblock %}
           </div>
