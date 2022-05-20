@@ -5,7 +5,7 @@ services:
   database1:
     image: postgres:10
     env_file:
-      - config/db/database1_env
+      - ./config/postgres/database_env
     networks:
       - database1_network
     volumes:
