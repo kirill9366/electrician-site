@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 EXPOSE 80
 
 # define the default command to run when starting the container
-CMD ["gunicorn", "--chdir", "site", "--bind", ":80", "electrician_site.wsgi:application"]
+ENTRYPOINT ["sh", "/opt/services/djangoapp/src/entrypoint.sh"]
