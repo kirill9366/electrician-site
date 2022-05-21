@@ -16,7 +16,10 @@ SECRET_KEY = "django-insecure-_df%uug@-!idr&@25=si2ry(%@a+u7pb^p33s0^1#07o8t!n6%
 # SECURITY WARNING: don"t run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "www.imt-electric.ru",
+    "imt-electric.ru",
+]
 
 
 # Application definition
