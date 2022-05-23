@@ -1,6 +1,13 @@
 from django.db import models
 
 
+class CategoryModel(models.Model):
+    title = models.CharField(
+        verbose_name="Название",
+        max_length=255,
+    )
+
+
 class BookModel(models.Model):
     title = models.CharField(
         verbose_name='Название',
@@ -9,6 +16,13 @@ class BookModel(models.Model):
     file = models.FileField(
         verbose_name='Файл книги',
         upload_to='books/',
+    )
+    category = models.ForeignKey(
+        CategoryModel,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="books"
     )
 
     def __str__(self):

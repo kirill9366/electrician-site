@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header_library %}
+  <li class="header__item">
+    <a class="header__link_active" href="{% url 'library' %}">Библиотека</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <section class="library">
+      <p class="library__title">{{ object.title }}</p>
+      <p class="library__subtitle"></p>
+      <div class="library_item__content">
+        {% for book in object.books.all %}
+          <a class="library_item" href="{{ book.file.url }}">
+            <p class="library_item__title">{{ book.title }}</p>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+{% endblock %}
