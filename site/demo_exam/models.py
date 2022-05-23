@@ -21,3 +21,73 @@ class ResultModel(models.Model):
         verbose_name='Описание',
         max_length=224,
     )
+
+
+class DemoExamInfoModel(models.Model):
+    title = models.CharField(
+        verbose_name="Название",
+        max_length=255,
+        null=True,
+        blank=True,
+    )
+    content = models.TextField(
+        null=True,
+        blank=True,
+    )
+    filter_num = models.IntegerField()
+
+
+class DemoExamDocModel(models.Model):
+    title = models.CharField(
+        verbose_name="Название",
+        max_length=255,
+        null=True,
+        blank=True,
+    )
+    content = models.TextField(
+        null=True,
+        blank=True,
+    )
+    filter_num = models.IntegerField()
+
+
+class DemoExamMontageModel(models.Model):
+    title = models.CharField(
+        verbose_name="Название",
+        max_length=255,
+        null=True,
+        blank=True,
+    )
+    content = models.TextField(
+        null=True,
+        blank=True,
+    )
+    filter_num = models.IntegerField()
+
+
+class DemoExamProgramModel(models.Model):
+    title = models.CharField(
+        verbose_name="Название",
+        max_length=255,
+        null=True,
+        blank=True,
+    )
+    content = models.TextField(
+        null=True,
+        blank=True,
+    )
+    filter_num = models.IntegerField()
+
+
+class DemoExamTroubleShootingModel(models.Model):
+    title = models.CharField(
+        verbose_name="Название",
+        max_length=255,
+        null=True,
+        blank=True,
+    )
+    content = models.TextField(
+        null=True,
+        blank=True,
+    )
+    filter_num = models.IntegerField()

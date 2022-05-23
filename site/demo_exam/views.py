@@ -4,16 +4,31 @@ from django.views.generic.base import TemplateView
 from django.views.generic import ListView
 
 # locale imports
-from .models import ResultModel
-
 from library.models import BookModel
 
+from .models import (
+    ResultModel,
+    DemoExamInfoModel,
+    DemoExamDocModel,
+    DemoExamMontageModel,
+    DemoExamProgramModel,
+    DemoExamTroubleShootingModel,
+)
 
-class InfoDemoExamView(LoginRequiredMixin, TemplateView):
+
+class InfoDemoExamView(LoginRequiredMixin, ListView):
+    model = DemoExamInfoModel
+    ordering = "filter_num"
+    context_object_name = "contents"
+
     template_name = 'demo_exam/demo_exam_info.html'
 
 
-class DocDemoExamView(LoginRequiredMixin, TemplateView):
+class DocDemoExamView(LoginRequiredMixin, ListView):
+    model = DemoExamDocModel
+    ordering = "filter_num"
+    context_object_name = "contents"
+
     template_name = 'demo_exam/demo_exam_documentation.html'
 
 
@@ -35,13 +50,25 @@ class ResDemoExamView(LoginRequiredMixin, ListView):
     template_name = 'demo_exam/demo_exam_results.html'
 
 
-class MontageDemoExamView(LoginRequiredMixin, TemplateView):
+class MontageDemoExamView(LoginRequiredMixin, ListView):
+    model = DemoExamMontageModel
+    ordering = "filter_num"
+    context_object_name = "contents"
+
     template_name = "demo_exam/demo_exam_montage.html"
 
 
-class ProgrammingDemoExamView(LoginRequiredMixin, TemplateView):
+class ProgrammingDemoExamView(LoginRequiredMixin, ListView):
+    model = DemoExamProgramModel
+    ordering = "filter_num"
+    context_object_name = "contents"
+
     template_name = "demo_exam/demo_exam_programming.html"
 
 
-class TroubleShootingDemoExamView(LoginRequiredMixin, TemplateView):
+class TroubleShootingDemoExamView(LoginRequiredMixin, ListView):
+    model = DemoExamTroubleShootingModel
+    ordering = "filter_num"
+    context_object_name = "contents"
+
     template_name = "demo_exam/demo_exam_troubleshooting.html"
