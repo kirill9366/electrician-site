@@ -1,3 +1,3 @@
-POSTGRES_USER=database1_role
-POSTGRES_PASSWORD=database1_password
-POSTGRES_DB=database1
+POSTGRES_USER=user
+POSTGRES_PASSWORD=sdkf392ujkdFKDf
+POSTGRES_DB=electrician_site

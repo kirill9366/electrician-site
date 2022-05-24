@@ -2,14 +2,16 @@ version: '3'
 
 services:
 
-  database1:
+  postgres:
     image: postgres:10
     env_file:
       - ./config/postgres/database_env
     networks:
-      - database1_network
+      - postgres_network
     volumes:
       - ./data/portgres:/var/lib/postgresql/data2
+    ports:
+      - '5432'
 
   djangoapp:
     build: .
@@ -18,9 +20,9 @@ services:
       - ./site/media:/opt/services/djangoapp/media 
     networks:
       - nginx_network
-      - database1_network
+      - postgres_network
     depends_on:
-      - database1
+      - postgres
 
   nginx:
     image: pagespeed/nginx-pagespeed:latest
@@ -38,5 +40,5 @@ services:
 networks:
   nginx_network:
     driver: bridge
-  database1_network:
+  postgres_network:
     driver: bridge

@@ -8,6 +8,7 @@ WORKDIR /opt/services/djangoapp/src
 # install our dependencies
 # we use --system flag because we don't need an extra virtualenv
 COPY . /opt/services/djangoapp/src
+RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # copy our project code
