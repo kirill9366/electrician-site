@@ -28,8 +28,10 @@ services:
     image: pagespeed/nginx-pagespeed:latest
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - ./config/ssl:/etc/letsencrypt
       - ./site/staticfiles:/opt/services/djangoapp/static
       - ./site/media:/opt/services/djangoapp/media
     depends_on:
