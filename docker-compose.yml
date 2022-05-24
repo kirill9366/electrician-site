@@ -9,7 +9,7 @@ services:
     networks:
       - postgres_network
     volumes:
-      - ./data/portgres:/var/lib/postgresql/data2
+      - ./data/portgres:/var/lib/postgresql/data
     ports:
       - '5432'
 
