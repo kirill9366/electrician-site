@@ -1,0 +1,17 @@
+{% extends "demo_exam/demo_exam_template.html" %}
+{% load static %}
+
+{% block demo_exam_lib %}
+  <a class="demo_exam__chapter demo_exam__chapter_active" href="{% url 'demo_exam_library' %}">Библиотека</a>
+{% endblock %}
+
+{% block demo_exam_content %}
+  <div class="library_item__content">
+    {% for book in object.books.all %}
+      <a class="library_item" href="{{ book.file.url }}">
+        <p class="library_item__title">{{ book.title }}</p>
+      </a>
+    {% endfor %}
+
+  </div>
+{% endblock %}

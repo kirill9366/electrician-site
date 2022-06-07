@@ -7,11 +7,11 @@
 
 {% block demo_exam_content %}
   <div class="demo_exam__categories">
-    {% for book in books %}
+    {% for category in categories %}
     <div class="demo_exma_category">
       <div class="category">
-        <p class="category__title">{{ book.title }}</p>
-        <a class="category__link" href="{{ book.file.url }}">Файл</a>
+        <p class="category__title">{{ category.title }}</p>
+        <a class="category__link" href="{% url 'demo_exam_library_item' pk=category.pk %}">Материалы</a>
       </div>
     </div>
     {% endfor %}

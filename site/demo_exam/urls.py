@@ -5,6 +5,7 @@ from .views import (
     InfoDemoExamView,
     DocDemoExamView,
     LibDemoExamView,
+    LibDemoExamDetailView,
     DatesDemoExamView,
     ResDemoExamView,
     MontageDemoExamView,
@@ -16,9 +17,14 @@ urlpatterns = [
     path("demo-exam/", InfoDemoExamView.as_view(), name="demo_exam"),
     path("demo-exam/doc/", DocDemoExamView.as_view(), name="demo_exam_doc"),
     path(
-        "demo-exam/lib/",
+        "demo-exam/library/",
         LibDemoExamView.as_view(),
         name="demo_exam_library",
+    ),
+    path(
+        "demo-exam/library/<int:pk>/",
+        LibDemoExamDetailView.as_view(),
+        name="demo_exam_library_item",
     ),
     path(
         "demo-exam/dates/",

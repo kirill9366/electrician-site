@@ -7,7 +7,7 @@ from .models import CategoryModel
 
 
 class LibraryView(LoginRequiredMixin, ListView):
-    model = CategoryModel
+    queryset = CategoryModel.objects.filter(page="lb")
     context_object_name = 'categories'
 
     template_name = 'library/library.html'

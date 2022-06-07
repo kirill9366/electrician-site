@@ -51,6 +51,20 @@ class DemoExamDocModel(models.Model):
     filter_num = models.IntegerField()
 
 
+class DemoExamDatesModel(models.Model):
+    title = models.CharField(
+        verbose_name="Название",
+        max_length=255,
+        null=True,
+        blank=True,
+    )
+    content = models.TextField(
+        null=True,
+        blank=True,
+    )
+    filter_num = models.IntegerField()
+
+
 class DemoExamMontageModel(models.Model):
     title = models.CharField(
         verbose_name="Название",

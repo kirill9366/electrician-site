@@ -38,7 +38,6 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
 .tox/
 .nox/
 .coverage
@@ -118,7 +117,6 @@ venv.bak/
 .ropeproject
 
 # mkdocs documentation
-/site
 
 # mypy
 .mypy_cache/
@@ -144,4 +142,3 @@ config.ini
 test.db
 dump.rdb
 push_commit.sh
-

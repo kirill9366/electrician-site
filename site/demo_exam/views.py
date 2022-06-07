@@ -1,19 +1,19 @@
 from braces.views import LoginRequiredMixin
 
-from django.views.generic.base import TemplateView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 # locale imports
-from library.models import BookModel
-
 from .models import (
     ResultModel,
     DemoExamInfoModel,
     DemoExamDocModel,
+    DemoExamDatesModel,
     DemoExamMontageModel,
     DemoExamProgramModel,
     DemoExamTroubleShootingModel,
 )
+
+from library.models import CategoryModel
 
 
 class InfoDemoExamView(LoginRequiredMixin, ListView):
@@ -33,13 +33,22 @@ class DocDemoExamView(LoginRequiredMixin, ListView):
 
 
 class LibDemoExamView(LoginRequiredMixin, ListView):
-    model = BookModel
-    context_object_name = 'books'
+    queryset = CategoryModel.objects.filter(page="dm")
+    context_object_name = 'categories'
 
     template_name = 'demo_exam/demo_exam_library.html'
 
 
-class DatesDemoExamView(LoginRequiredMixin, TemplateView):
+class LibDemoExamDetailView(LoginRequiredMixin, DetailView):
+    model = CategoryModel
+
+    template_name = 'demo_exam/demo_exam_library_item.html'
+
+
+class DatesDemoExamView(LoginRequiredMixin, ListView):
+    model = DemoExamDatesModel
+    ordering = "filter_num"
+
     template_name = 'demo_exam/demo_exam_calendar.html'
 
 

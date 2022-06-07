@@ -1,0 +1,13 @@
+{% extends "demo_exam/demo_exam_template.html" %}
+{% load static %}
+
+{% block demo_exam_dates %}
+  <a class="demo_exam__chapter demo_exam__chapter_active" href="{% url 'demo_exam_dates' %}">Сроки проведения</a>
+{% endblock %}
+
+{% block demo_exam_content %}
+  {% for content in contents %}
+    <p class="demo_exam__subject">{{ content.title }}</p>
+    <p class="demo_exam_paragraph">{{ content.content }}</p>
+  {% endfor %}
+{% endblock %}
