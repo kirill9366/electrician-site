@@ -36,6 +36,7 @@ services:
       - ./site/media:/opt/services/djangoapp/media
     depends_on:
       - djangoapp
+      - postgres
     networks:
       - nginx_network
 
