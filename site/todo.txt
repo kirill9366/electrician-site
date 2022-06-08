@@ -1,0 +1,5 @@
+- Добавить тесты https://docs.djangoproject.com/en/3.2/topics/testing/tools/#fixture-loading
+- Сделать активные ссылки в хеадере (https://gist.github.com/dantyan/e26bad642be741298fabd3964839a740 )
++ Логотип
++ Категории в Библиотеке
++ Редактирование демо экзамена
