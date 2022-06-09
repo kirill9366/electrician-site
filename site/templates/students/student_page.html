@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load bbcode_tags %}
+{% bbcode entry.bbcode_content %}
 {% load static %}
 {% load sorl_thumbnail %}
 
@@ -16,8 +18,8 @@
         {% thumbnail object.image "374x433" crop="center" as im %}
           <div class="profile__info"><img class="profile__img" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
             <div class="profile__short_info">
-              <p class="profile__name">{{ object.full_name }}</p>
-              <p class="profile__profession">{{ object.subtitle }}</p>
+              <p class="profile__name">{{ object.full_name|bbcode|safe }}</p>
+              <p class="profile__profession">{{ object.subtitle|bbcode|safe }}</p>
               {% if object.email %}
                 <div class="profile__contact_block">
                   <i class="profile__big_icon fas fa-envelope fa-2x"></i>
@@ -31,7 +33,7 @@
       </div>
       <div class="profile_bottom_info">
         <div class="profile__description_title">Описание</div>
-        <div class="profile__description">{{ object.description }}</div>
+        <div class="profile__description">{{ object.description|bbcode|safe }}</div>
       </div>
     </section>
   </div>

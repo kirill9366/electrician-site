@@ -1,4 +1,7 @@
 {% extends "demo_exam/demo_exam_template.html" %}
+
+{% load bbcode_tags %}
+{% bbcode entry.bbcode_content %}
 {% load static %}
 
 {% block demo_exam_res %}
@@ -10,12 +13,12 @@
     <div class="demo_exam__result">
       <div class="result_card"><img class="result_card__img" src="{{ result.image.url }}">
         <div class="result_card__info">
-          <div class="result_card__name">{{ result.full_name }}</div>
-          <div class="result_card_course">{{ result.subtitle }}</div>
+          <div class="result_card__name">{{ result.full_name|bbcode|safe }}</div>
+          <div class="result_card_course">{{ result.subtitle|bbcode|safe }}</div>
           <div class="result_card__contact"><i class="result_card__icon fas fa-envelope fa-1x"></i>
             <div class="result_card___contact_text">{{ result.email }}</div>
           </div>
-          <div class="result_card__desc">{{ result.description }}</div>
+          <div class="result_card__desc">{{ result.description|bbcode|safe }}</div>
         </div>
       </div>
     </div>

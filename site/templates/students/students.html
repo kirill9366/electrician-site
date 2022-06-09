@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load bbcode_tags %}
+{% bbcode entry.bbcode_content %}
 {% load static %}
 {% load sorl_thumbnail %}
 
@@ -20,7 +22,7 @@
                 {% thumbnail student.image "374x433" crop="center" as im %}
                   <div class="student_card__inner_block"><img class="student_card__img" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                 {% endthumbnail %}
-                <p class="student_card__name">{{ student.full_name }}</p>
+                <p class="student_card__name">{{ student.full_name|bbcode|safe }}</p>
               </div>
             </a>
           </div>

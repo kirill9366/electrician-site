@@ -1,5 +1,9 @@
 {% extends "base.html" %}
+
+{% load bbcode_tags %}
+{% bbcode entry.bbcode_content %}
 {% load static %}
+
 {% block header_course_projects %}
   <li class="header__item">
     <a class="header__link_active" href="{% url 'course_projects' %}">Курсовые и дипломные проекты</a>
@@ -8,15 +12,15 @@
 {% block content %}
     <div class="content">
       <section class="course_paper">
-        <p class="course_paper__title">{{ object.title }}</p>
-        <p class="course_paper__subtitle">{{ object.subtitle }}</p>
+        <p class="course_paper__title">{{ object.title|bbcode|safe }}</p>
+        <p class="course_paper__subtitle">{{ object.subtitle|bbcode|safe }}</p>
         <div class="course_paper__content">
           {% for paragraph in object.content.all %}
             {% if paragraph.title %}
-              <p class="course_paper__subject">{{ paragraph.title }}</p>
+              <p class="course_paper__subject">{{ paragraph.title|bbcode|safe }}</p>
             {% endif %}
             {% if paragraph.text %}
-              <p class="course_paper__text">{{ paragraph.text }}</p>
+              <p class="course_paper__text">{{ paragraph.text|bbcode|safe }}</p>
             {% endif %}
           {% endfor %}
           <a class="course_paper__button" href="{{ object.file.url }}">Скачать</a>

@@ -1,4 +1,7 @@
 {% extends "demo_exam/demo_exam_template.html" %}
+
+{% load bbcode_tags %}
+{% bbcode entry.bbcode_content %}
 {% load static %}
 
 {% block modules %}
@@ -12,10 +15,10 @@
 {% block demo_exam_content %}
   {% for content in contents %}
     {% if content.title %}
-      <p class="demo_exam__subject">{{ content.title }}</p>
+      <p class="demo_exam__subject">{{ content.title|bbcode|safe }}</p>
     {% endif %}
     {% if content.content %}
-      <p class="demo_exam_paragraph">{{ content.content }}</p>
+      <p class="demo_exam_paragraph">{{ content.content|bbcode|safe }}</p>
     {% endif %}
     {% if content.image %}
       <img class="demo_exam__img" src="{{ content.image.url }}">

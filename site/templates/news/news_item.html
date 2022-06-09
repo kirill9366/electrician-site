@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% load bbcode_tags %}
+{% bbcode entry.bbcode_content %}
+
 {% block header_news %}
   <li class="header__item">
     <a class="header__link_active" href="{% url 'news' %}">Новости</a>
@@ -9,11 +12,11 @@
 {% block content %}
     <div class="content">
       <section class="news_item">
-        <p class="news_item__date">{{ object.date }}</p>
-        <p class="news_item__title">{{ object.title }}</p>
+        <p class="news_item__date">{{ object.date|bbcode|safe }}</p>
+        <p class="news_item__title">{{ object.title|bbcode|safe }}</p>
         {% for paragraph in object.content.all %}
           {% if paragraph.text %}
-            <p class="news_item__text">{{ paragraph.text }}</p>
+            <p class="news_item__text">{{ paragraph.text|bbcode|safe }}</p>
           {% endif %}
           {% if paragraph.image %}
             <img class="news_item__img" src="{{ paragraph.image.url }}">

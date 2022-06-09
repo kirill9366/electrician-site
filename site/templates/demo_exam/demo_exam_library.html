@@ -1,4 +1,7 @@
 {% extends "demo_exam/demo_exam_template.html" %}
+
+{% load bbcode_tags %}
+{% bbcode entry.bbcode_content %}
 {% load static %}
 
 {% block demo_exam_lib %}
@@ -10,7 +13,7 @@
     {% for category in categories %}
     <div class="demo_exma_category">
       <div class="category">
-        <p class="category__title">{{ category.title }}</p>
+        <p class="category__title">{{ category.title|bbcode|safe }}</p>
         <a class="category__link" href="{% url 'demo_exam_library_item' pk=category.pk %}">Материалы</a>
       </div>
     </div>

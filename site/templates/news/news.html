@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% load bbcode_tags %}
+{% bbcode entry.bbcode_content %}
 {% load static %}
 
 {% block header_news %}
@@ -15,8 +18,8 @@
           {% for news_item in news %}
             <div class="news__card"><a class="news_card" href="{% url 'news_item' pk=news_item.pk %}">
                       <div class="news_card__inner"><img class="news_card__img" src="{{ news_item.preview_image.url }}">
-                        <p class="news_card__title">{{ news_item.title|truncatechars:26 }}</p>
-                        <p class="news_card__description">{{ news_item.preview_text|truncatechars:180 }}</p>
+                        <p class="news_card__title">{{ news_item.title|bbcode|safe|truncatechars:26 }}</p>
+                        <p class="news_card__description">{{ news_item.preview_text|bbcode|safe|truncatechars:180 }}</p>
                       </div></a>
             </div>
           {% endfor %}

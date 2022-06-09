@@ -1,4 +1,7 @@
 {% extends "demo_exam/demo_exam_template.html" %}
+
+{% load bbcode_tags %}
+{% bbcode entry.bbcode_content %}
 {% load static %}
 
 {% block demo_exam_lib %}
@@ -9,7 +12,7 @@
   <div class="library_item__content">
     {% for book in object.books.all %}
       <a class="library_item" href="{{ book.file.url }}">
-        <p class="library_item__title">{{ book.title }}</p>
+        <p class="library_item__title">{{ book.title|bbcode|safe }}</p>
       </a>
     {% endfor %}
 

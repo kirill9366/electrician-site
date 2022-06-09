@@ -47,7 +47,7 @@
         </div>
         <div class="profile_bottom_info">
           <div class="profile__description_title">Описание</div>
-          <div class="profile__description">{{ about_us.description }}</div>
+          <div class="profile__description">{{ about_us.description|bbcode|safe }}</div>
         </div>
       </section>
     </div>
