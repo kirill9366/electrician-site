@@ -1,0 +1,1 @@
+[{"model": "course_projects.coursemodel", "pk": 1, "fields": {"number": 2}}, {"model": "course_projects.coursemodel", "pk": 2, "fields": {"number": 3}}, {"model": "course_projects.coursemodel", "pk": 3, "fields": {"number": 4}}]
