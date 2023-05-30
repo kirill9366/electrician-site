@@ -1,5 +1,3 @@
-from decouple import config
-
 from pathlib import Path
 
 import os
@@ -13,19 +11,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = "SECRET_KEY"
 
 # SECURITY WARNING: don"t run with debug turned on in production!
-DEBUG = config("DEBUG") == "True"
+DEBUG = True
 
-ALLOWED_HOSTS = []
-hosts = config("ALLOWED_HOSTS").split(" ")
-BASE_URL = "https://" + hosts[0]
-for host in hosts:
-    host = host.strip()
-    if host:
-        ALLOWED_HOSTS.append(host)
-
+ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -138,22 +129,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
-PIPELINE = {
-    "PIPELINE_ENABLED": True,
-    "STYLESHEETS": {
-        "colors": {
-            "source_filenames": [
-                "css/styles.css",
-            ],
-            "output_filename": "css/styles.css",
-            "extra_context": {
-                "media": "screen,projection",
-            },
-        },
-    },
-}
-
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
@@ -173,4 +148,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "/sign-in/"
 
-STATICFILES_STORAGE = "pipeline.storage.PipelineStorage"

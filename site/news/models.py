@@ -45,7 +45,6 @@ class NewsItemModel(models.Model):
     )
     date = models.DateField(
         verbose_name='Дата',
-        auto_now=True,
     )
     content = models.ManyToManyField(
         ParagraphModel,
